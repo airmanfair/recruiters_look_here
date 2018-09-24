@@ -14,36 +14,6 @@ WAN optimizers reduce the amount of data sent in various ways.  For this assignm
 
 A WAN Optimizer is a concrete example of a middlebox application that violates the end-to-end principle, but because of the substantial benefits it provides, it has become a common occurance in the network. Companies like Riverbed and Blue Coat specialize in providing propriatary WAN Optimizer solutions to enterprise customers. You'll be building a simplified version of solutions that such companies provide.
 
-#### Logistics
-
-- This assignment should be implemented in Python 2.
-- The project is due on Friday, November 17th, at 11:59pm.
-- You'll submit your code using `ok`. You should submit two files: one named `simple_wan_optimizer.py` (for part 1) and one named `lbfs_wan_optimizer.py` (for part 2). You should not modify or submit the other python files provided.
-
-#### Resources
-
-- If you have questions, first take a look at the [FAQ section](#faq).  If your question isn't answered there, post to Piazza.
-
-## Provided Code
-
-We've provided a few files that you will need to familiarize yourself with:
-
-  - `wan_optimizer.py`: This file defines `BaseWanOptimizer`, a class that both of your WAN optimizers should subclass.  `BaseWanOptimizer` implements a few methods that allow our test code to connect the WAN optimizer to a wide area network, and to connect clients to the WAN optimizer.  It also includes a `send` function, which you should use to send packets from the WAN optimizer.  The only method you'll need to implement is `receive`, which accepts a packet (which may be coming from the WAN, or from one of the directly connected clients) and determines where to send that packet, and whether any compression should be done. 
-  - `tcp_packet.py`: This file defines the packet class that's used for sending data.
-  - `wan.py`: This file defines `Wan`, a class that handles forwarding data between two WAN optimizers connected across a wide area network.  It keeps track of how much data has been sent, which we'll use to test that your WANOptimizer is sufficiently reducing the amount of data sent.
-  - `client.py`: This file defines `EndHost`, a class that reads an input file, breaks that file into packets, and sends the packets over the network.  This class is used in `project3_tests.py` to test that your WAN optimizers correctly sends data.
-  - `project3_tests.py`: This file defines tests you can use to verify that your code is working correctly. As example, to run the `send_less_than_one_block` test (which verifies that your WAN optimizer can correctly forward a small amount of data that's less than the part 1 block size) on the WAN optimizer in `simple_wan_optimizer.py`:
-
-        $ python project3_tests.py --middlebox-name simple_wan_optimizer --send-less-than-one-block
-        
-    You may find the `--run-all` flag useful, which will run all of the tests.  The file containing each test has a description of the test's functionality; all individual test files are located in the `tests` directory.  We will run additional tests when grading your project, and you are encouraged to write your own tests.  As with project 2, you're welcome to share your tests via Piazza with others, but run other students' tests at your own risk!
-      
-  - `utils.py`: This file defines utility functions that may be helpful.
-
-Packets are forwarded by calling the `receive` function on the next element in the network.  You should not be forwarding packets yourself by calling `receive`; instead, your code should use the `send` method in `BaseWanOptimizer` to send packets out a particular port.
-
-__The only files you should modify are `simple_wan_optimizer.py` and `lbfs_wan_optimizer.py`.__
-
 ## Part 1
 
 The first part of the assignment will help you get started with some middlebox functionality by implementing simple data de-duplication.  For this part of the assignment, you should fill in the `receive` method if the `WanOptimizer` class defined in `simple_wan_optimizer.py`.
