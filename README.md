@@ -10,4 +10,4 @@ I have uploaded a text document within this repo that provides the full names of
 
 ## **To request access:**
 
-Please reach out to me via email or LinkedIn with your Github username and the name of the drive(s) you would like to request access to (*school_projects* or *research_projects*). If it is during normal business hours, I should be able to get back to you within an hour or so. Outside of business hours I should be able to get back to you the same day, though response times will vary.
+Please reach out to me via email or LinkedIn with your Github username and the name of the repo(s) you would like to request access to (*school_projects* or *research_projects*). If it is during normal business hours, I should be able to get back to you within an hour or so. Outside of business hours I should be able to get back to you the same day, though response times will vary.
